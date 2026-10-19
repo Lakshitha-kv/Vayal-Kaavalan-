@@ -1,0 +1,150 @@
+[
+  {
+    "product": "_disclaimer",
+    "approved_crops": [],
+    "phi_days": 0,
+    "dose_per_acre": "",
+    "restricted": false,
+    "_disclaimer": "FICTIONAL DATA — for demonstration only. Not real agronomic advice. All product names are invented."
+  },
+  {
+    "product": "Nelvin-75WP",
+    "approved_crops": ["paddy", "groundnut"],
+    "phi_days": 14,
+    "dose_per_acre": "200g",
+    "restricted": false
+  },
+  {
+    "product": "Karvex-50EC",
+    "approved_crops": ["tomato", "brinjal", "cotton"],
+    "phi_days": 7,
+    "dose_per_acre": "400ml",
+    "restricted": false
+  },
+  {
+    "product": "Zorathion-20SL",
+    "approved_crops": ["paddy", "sugarcane"],
+    "phi_days": 21,
+    "dose_per_acre": "300ml",
+    "restricted": true
+  },
+  {
+    "product": "Fenavar-10GR",
+    "approved_crops": ["banana", "sugarcane"],
+    "phi_days": 30,
+    "dose_per_acre": "2kg",
+    "restricted": false
+  },
+  {
+    "product": "Cryptozole-40WP",
+    "approved_crops": ["onion", "tomato"],
+    "phi_days": 5,
+    "dose_per_acre": "150g",
+    "restricted": false
+  },
+  {
+    "product": "Mandavar-80WG",
+    "approved_crops": ["paddy", "cotton", "groundnut"],
+    "phi_days": 10,
+    "dose_per_acre": "250g",
+    "restricted": false
+  },
+  {
+    "product": "Thalavan-25EC",
+    "approved_crops": ["banana", "brinjal"],
+    "phi_days": 12,
+    "dose_per_acre": "500ml",
+    "restricted": false
+  },
+  {
+    "product": "Veluvar-15SC",
+    "approved_crops": ["sugarcane", "cotton"],
+    "phi_days": 45,
+    "dose_per_acre": "350ml",
+    "restricted": true
+  },
+  {
+    "product": "Kuzhalin-30DF",
+    "approved_crops": ["onion", "groundnut"],
+    "phi_days": 8,
+    "dose_per_acre": "180g",
+    "restricted": false
+  },
+  {
+    "product": "Solvex-60EC",
+    "approved_crops": ["tomato", "onion", "brinjal"],
+    "phi_days": 3,
+    "dose_per_acre": "600ml",
+    "restricted": false
+  },
+  {
+    "product": "Padiran-70WP",
+    "approved_crops": ["paddy"],
+    "phi_days": 20,
+    "dose_per_acre": "300g",
+    "restricted": false
+  },
+  {
+    "product": "Kambavar-45SC",
+    "approved_crops": ["groundnut", "cotton"],
+    "phi_days": 15,
+    "dose_per_acre": "400ml",
+    "restricted": false
+  },
+  {
+    "product": "Thennai-55WP",
+    "approved_crops": ["banana", "sugarcane"],
+    "phi_days": 28,
+    "dose_per_acre": "220g",
+    "restricted": false
+  },
+  {
+    "product": "Vaigai-35EC",
+    "approved_crops": ["paddy", "brinjal", "tomato"],
+    "phi_days": 7,
+    "dose_per_acre": "450ml",
+    "restricted": false
+  },
+  {
+    "product": "Kaveri-80DF",
+    "approved_crops": ["cotton", "groundnut", "onion"],
+    "phi_days": 12,
+    "dose_per_acre": "200g",
+    "restricted": false
+  },
+  {
+    "product": "Mozhi-20WP",
+    "approved_crops": ["sugarcane", "banana"],
+    "phi_days": 0,
+    "dose_per_acre": "500g",
+    "restricted": false
+  },
+  {
+    "product": "Selvan-90EC",
+    "approved_crops": ["tomato", "onion"],
+    "phi_days": 5,
+    "dose_per_acre": "350ml",
+    "restricted": false
+  },
+  {
+    "product": "Muzhavan-10GR",
+    "approved_crops": ["paddy", "sugarcane", "banana"],
+    "phi_days": 14,
+    "dose_per_acre": "1.5kg",
+    "restricted": false
+  },
+  {
+    "product": "Kannan-50WG",
+    "approved_crops": ["brinjal", "cotton", "groundnut"],
+    "phi_days": 9,
+    "dose_per_acre": "300g",
+    "restricted": false
+  },
+  {
+    "product": "Vetrivel-25SC",
+    "approved_crops": ["tomato", "brinjal"],
+    "phi_days": 4,
+    "dose_per_acre": "250ml",
+    "restricted": false
+  }
+]

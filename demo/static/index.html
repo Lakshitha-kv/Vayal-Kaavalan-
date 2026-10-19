@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vayal Kaavalan — field guardian</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Noto+Sans+Tamil:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --terracotta:#C1440E; --turmeric:#E8A217; --indigo:#2D3A7C;
+    --cream:#F5EDD6; --charcoal:#1C1005;
+    --terracotta-edge:#a33a0b; --indigo-edge:#1f2a5e;
+    --paper:#FBF6E6; --line:#d8c79a; --ink-mute:#6b5a3a;
+  }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body {
+    min-height:100vh;
+    color:var(--charcoal);
+    font:16px/1.5 "Noto Sans Tamil", system-ui, -apple-system, "Segoe UI", sans-serif;
+    background-color:var(--cream);
+    /* warm paper grain — no external images */
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+  }
+
+  /* ---- sunrise header ---- */
+  header {
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    padding:14px 18px; color:#fff;
+    background:linear-gradient(135deg, var(--indigo) 0%, var(--terracotta) 55%, var(--turmeric) 100%);
+    background-size:200% 200%;
+    animation:sunrise 9s ease-in-out infinite alternate;
+  }
+  @keyframes sunrise { from { background-position:0% 50%; } to { background-position:100% 50%; } }
+  header h1 { font-family:"Playfair Display", Georgia, serif; font-size:22px; margin:0; font-weight:700; }
+  header .meta { color:#fff; font-size:13px; opacity:.92; margin-left:auto; max-width:60ch; }
+  header .controls { display:flex; align-items:center; gap:8px; }
+  .lang-btn, .send, .clip, #m {
+    min-width:44px; min-height:44px;
+  }
+  .lang-btn {
+    background:rgba(255,255,255,.16); color:#fff; border:2px solid rgba(255,255,255,.7);
+    border-radius:999px; padding:8px 14px; font:600 13px/1 "Noto Sans Tamil", sans-serif; cursor:pointer;
+  }
+  .lang-btn:hover { background:rgba(255,255,255,.28); }
+
+  /* ---- disclaimer banner ---- */
+  .disclaimer {
+    background:#fef3c7; color:var(--charcoal); padding:10px 16px; text-align:center;
+    font-weight:600; font-size:13px; border-bottom:2px solid var(--turmeric);
+  }
+
+  /* ---- layout ---- */
+  main {
+    display:grid; grid-template-columns:1.05fr 1fr; gap:16px; padding:16px 18px;
+    align-items:start;
+  }
+  @media (max-width:820px) { main { grid-template-columns:1fr; } }
+
+  .card {
+    background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:14px;
+    /* kolam-inspired diamond + dot border motif */
+    border-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Cpath d='M20 2 L38 20 L20 38 L2 20 Z' fill='none' stroke='%23C1440E' stroke-width='1.4'/%3E%3Ccircle cx='20' cy='20' r='1.6' fill='%23E8A217'/%3E%3C/svg%3E") 12 stretch;
+    border-style:solid; border-width:6px;
+  }
+  .card h2 {
+    margin:0 0 10px; font-family:"Playfair Display", Georgia, serif; font-size:15px;
+    color:var(--indigo); letter-spacing:.02em;
+  }
+
+  /* ---- chat ---- */
+  #log { display:flex; flex-direction:column; gap:10px; max-height:46vh; overflow:auto; padding:4px; }
+  .msg { padding:10px 14px; max-width:88%; line-height:1.45; white-space:pre-wrap; box-shadow:3px 3px 0 rgba(0,0,0,.15); border-width:2px; border-style:solid; }
+  /* painted wall-sign chat bubbles with a faint kolam diamond+dot texture (inline SVG) */
+  .msg-farmer { align-self:flex-end; background:var(--terracotta); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M11 2 L20 11 L11 20 L2 11 Z' fill='none' stroke='%23F5EDD6' stroke-width='0.9' stroke-opacity='0.3'/%3E%3Ccircle cx='11' cy='11' r='1' fill='%23F5EDD6' fill-opacity='0.3'/%3E%3C/svg%3E"); background-size:18px 18px; color:var(--cream); border-radius:18px 18px 4px 18px; border-color:var(--terracotta-edge); }
+  .msg-agent  { align-self:flex-start; background:var(--indigo); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Cpath d='M11 2 L20 11 L11 20 L2 11 Z' fill='none' stroke='%23F5EDD6' stroke-width='0.9' stroke-opacity='0.3'/%3E%3Ccircle cx='11' cy='11' r='1' fill='%23F5EDD6' fill-opacity='0.3'/%3E%3C/svg%3E"); background-size:18px 18px; color:var(--cream); border-radius:18px 18px 18px 4px; border-color:var(--indigo-edge); }
+  .msg .t { color:rgba(255,255,255,.8); font-size:12px; margin-top:6px; }
+  .att { display:flex; gap:8px; margin:6px 0 0; }
+  .att img, .msg img { height:64px; border-radius:8px; border:1px solid var(--line); }
+  .msg img { height:120px; display:block; margin-bottom:6px; border-color:rgba(255,255,255,.35); }
+
+  form { display:flex; gap:10px; margin-top:12px; align-items:stretch; }
+  .clip { display:flex; align-items:center; justify-content:center; padding:0 12px; border:2px solid var(--line); border-radius:12px; cursor:pointer; font-size:20px; background:#fff; }
+  #m { flex:1; min-height:44px; background:#fff; color:var(--charcoal); border:2px solid var(--line); border-radius:12px; padding:10px 12px; font:inherit; }
+  .send { background:var(--terracotta); color:#fff; border:0; border-radius:12px; padding:0 20px; font-weight:700; cursor:pointer; }
+  .send:hover { background:var(--terracotta-edge); }
+
+  /* ---- field panel ---- */
+  .field-card { display:flex; flex-direction:column; gap:12px; }
+  .furrow {
+    border:1px solid var(--line); border-radius:10px; padding:10px; background:#fff;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Ccircle cx='12' cy='12' r='1' fill='%23C1440E'/%3E%3C/svg%3E");
+  }
+  .furrow-head { display:flex; justify-content:space-between; align-items:baseline; font-size:13px; }
+  .furrow-label { font-weight:600; color:var(--indigo); }
+  .furrow-value { font:600 13px/1 "Noto Sans Tamil", monospace; color:var(--charcoal); }
+  /* --max-grow ties the seedling's full-grown height to the track height so the
+     dotted threshold line at bottom:65% lands exactly at the 0.65 confidence level. */
+  .furrow-track { position:relative; --max-grow:78px; height:var(--max-grow); display:flex; align-items:flex-end; justify-content:center; margin-top:6px; }
+  .threshold-line {
+    position:absolute; left:0; right:0; bottom:65%;
+    border-top:2px dotted var(--terracotta);
+  }
+  .threshold-line::after {
+    content:"65%"; position:absolute; right:0; top:-14px; font-size:10px; color:var(--terracotta); background:#fff; padding:0 3px;
+  }
+  .seedling {
+    width:46px; height:calc(var(--conf, 0) * var(--max-grow)); transition:height .4s ease, filter .4s ease, transform .4s ease; transform-origin:bottom center;
+  }
+  .seedling.wilted { filter:grayscale(.55) sepia(.35) brightness(.85); transform:rotate(-7deg); }
+
+  /* field gate verdict indicator */
+  .field-gate, .scarecrow {
+    transition:all .4s ease; align-self:center;
+  }
+  .field-gate { position:relative; width:150px; }
+  .field-gate .gate-svg, .scarecrow .sc-svg { display:none; width:100%; height:auto; }
+  .field-gate.gate-proceed .gate-proceed,
+  .field-gate.gate-guide .gate-guide,
+  .field-gate.gate-deny .gate-deny,
+  .field-gate.gate-confirm .gate-confirm { display:block; }
+  .field-gate.gate-neutral .gate-neutral { display:block; }
+  .gate-verdict { text-align:center; font-family:"Playfair Display", serif; font-weight:700; color:var(--indigo); margin-top:4px; min-height:1.2em; }
+
+  .scarecrow { width:96px; }
+  .scarecrow .sc-svg { width:100%; }
+  .scarecrow.scarecrow-proceed .sc-proceed,
+  .scarecrow.scarecrow-guide .sc-guide,
+  .scarecrow.scarecrow-deny .sc-deny,
+  .scarecrow.scarecrow-confirm .sc-confirm,
+  .scarecrow.scarecrow-neutral .sc-neutral { display:block; }
+
+  .dec-log { font-size:12px; color:var(--ink-mute); border-top:1px dashed var(--line); padding-top:8px; max-height:120px; overflow:auto; }
+  .dec-log:empty { display:none; }
+
+  footer {
+    text-align:center; padding:14px; color:var(--ink-mute); font-size:13px;
+    border-top:1px solid var(--line); margin-top:8px;
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1 id="name" data-en="🌾 Vayal Kaavalan" data-ta="🌾 வயல் காவலன்">🌾 Vayal Kaavalan</h1>
+  <span class="meta" id="meta"></span>
+  <span class="controls">
+    <button class="lang-btn" id="lang" type="button" aria-label="Toggle Tamil and English">EN · தமிழ்</button>
+  </span>
+</header>
+
+<div class="disclaimer" role="alert">
+  ⚠️ EXPERIMENTAL PROTOTYPE — Fictional synthetic data. Not agronomic advice. Confirm all sprays with a real agriculture officer.
+</div>
+
+<main>
+  <section class="card chat-card">
+    <h2 data-en="Conversation" data-ta="உரையாடல்">Conversation</h2>
+    <div id="log" aria-live="polite"></div>
+    <div id="att" class="att" aria-label="Attached photos"></div>
+    <form id="f">
+      <label class="clip" title="Attach a photo" aria-label="Attach a photo">&#128206;<input id="img" type="file" accept="image/*" multiple hidden></label>
+      <label for="m" class="visually-hidden" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Message</label>
+      <input id="m" placeholder="Type your message" autocomplete="off" data-en-placeholder="Type your message" data-ta-placeholder="உங்கள் செய்தியை தட்டச்சு செய்யுங்கள்">
+      <button class="send" type="submit" data-en="Send" data-ta="அனுப்பு">Send</button>
+    </form>
+  </section>
+
+  <section class="card field-card" aria-label="Field panel">
+    <h2 data-en="Field Panel" data-ta="வயல் பலகை">Field Panel</h2>
+
+    <div class="furrow" id="row-crop_grounded">
+      <div class="furrow-head">
+        <span class="furrow-label" data-en="Crop grounded" data-ta="பயிர் உறுதி">Crop grounded</span>
+        <span class="furrow-value">—</span>
+      </div>
+      <div class="furrow-track">
+        <div class="threshold-line"></div>
+        <svg class="seedling" viewBox="0 0 46 80" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+          <path d="M23 80 L23 30" stroke="#2D3A7C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M23 44 C12 40 7 30 7 22 C18 24 23 33 23 44" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <path d="M23 40 C34 36 39 26 39 18 C28 20 23 29 23 40" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <circle cx="23" cy="30" r="3" fill="#E8A217"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="furrow" id="row-pest_match">
+      <div class="furrow-head">
+        <span class="furrow-label" data-en="Pest match" data-ta="பூச்சி பொருத்தம்">Pest match</span>
+        <span class="furrow-value">—</span>
+      </div>
+      <div class="furrow-track">
+        <div class="threshold-line"></div>
+        <svg class="seedling" viewBox="0 0 46 80" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+          <path d="M23 80 L23 28" stroke="#2D3A7C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M23 42 C10 38 5 28 5 20 C17 22 23 31 23 42" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <path d="M23 38 C36 34 41 24 41 16 C29 18 23 27 23 38" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <circle cx="23" cy="28" r="3.2" fill="#C1440E"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="furrow" id="row-spray_requested">
+      <div class="furrow-head">
+        <span class="furrow-label" data-en="Spray requested" data-ta="தெளிப்பு கேட்கப்பட்டது">Spray requested</span>
+        <span class="furrow-value">—</span>
+      </div>
+      <div class="furrow-track">
+        <div class="threshold-line"></div>
+        <svg class="seedling" viewBox="0 0 46 80" preserveAspectRatio="xMidYEnd meet" aria-hidden="true">
+          <path d="M23 80 L23 32" stroke="#2D3A7C" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M23 46 C12 42 7 32 7 24 C18 26 23 35 23 46" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <path d="M23 42 C34 38 39 28 39 20 C28 22 23 31 23 42" fill="#7C8DB5" stroke="#2D3A7C" stroke-width="1"/>
+          <circle cx="23" cy="32" r="3" fill="#E8A217"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="field-gate gate-neutral" id="gate" role="alert" aria-live="assertive" aria-label="No decision yet">
+      <svg class="gate-svg gate-neutral" viewBox="0 0 150 90" aria-hidden="true">
+        <rect x="30" y="20" width="90" height="60" rx="3" fill="#F5EDD6" stroke="#2D3A7C" stroke-width="3"/>
+        <line x1="75" y1="20" x2="75" y2="80" stroke="#2D3A7C" stroke-width="3"/>
+        <text x="75" y="58" text-anchor="middle" font-family="Playfair Display, serif" font-size="26" fill="#2D3A7C">field gate</text>
+      </svg>
+      <svg class="gate-svg gate-proceed" viewBox="0 0 150 90" aria-hidden="true">
+        <path d="M30 80 L30 20 L8 22" stroke="#2D3A7C" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M120 80 L120 20 L142 22" stroke="#2D3A7C" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <path d="M8 22 L30 20" stroke="#34D399" stroke-width="4" fill="none"/>
+        <path d="M142 22 L120 20" stroke="#34D399" stroke-width="4" fill="none"/>
+        <text x="75" y="76" text-anchor="middle" font-family="Playfair Display, serif" font-size="16" fill="#34D399">open</text>
+      </svg>
+      <svg class="gate-svg gate-guide" viewBox="0 0 150 90" aria-hidden="true">
+        <rect x="30" y="20" width="60" height="60" rx="3" fill="#F5EDD6" stroke="#E8A217" stroke-width="3"/>
+        <path d="M120 80 L120 20 L142 22" stroke="#2D3A7C" stroke-width="6" fill="none" stroke-linecap="round"/>
+        <text x="60" y="56" text-anchor="middle" font-family="Playfair Display, serif" font-size="34" fill="#E8A217">?</text>
+      </svg>
+      <svg class="gate-svg gate-deny" viewBox="0 0 150 90" aria-hidden="true">
+        <rect x="22" y="20" width="106" height="60" rx="3" fill="#C1440E" stroke="#a33a0b" stroke-width="3"/>
+        <line x1="22" y1="20" x2="128" y2="80" stroke="#F5EDD6" stroke-width="5"/>
+        <text x="75" y="14" text-anchor="middle" font-family="Playfair Display, serif" font-size="12" fill="#C1440E">shut — rope</text>
+      </svg>
+      <svg class="gate-svg gate-confirm" viewBox="0 0 150 90" aria-hidden="true">
+        <rect x="22" y="20" width="80" height="60" rx="3" fill="#2D3A7C" stroke="#1f2a5e" stroke-width="3"/>
+        <line x1="118" y1="20" x2="118" y2="82" stroke="#1C1005" stroke-width="3"/>
+        <path d="M118 20 L140 26 L118 34" fill="#E8A217" stroke="#C1440E" stroke-width="1"/>
+        <text x="62" y="58" text-anchor="middle" font-family="Playfair Display, serif" font-size="12" fill="#F5EDD6">officer</text>
+      </svg>
+      <div class="gate-verdict" id="gate-verdict"></div>
+    </div>
+
+    <div class="scarecrow scarecrow-neutral" id="scarecrow" aria-hidden="true">
+      <svg class="sc-svg sc-neutral" viewBox="0 0 96 120" aria-hidden="true">
+        <line x1="48" y1="60" x2="48" y2="116" stroke="#1C1005" stroke-width="4"/>
+        <line x1="20" y1="74" x2="76" y2="74" stroke="#1C1005" stroke-width="4"/>
+        <circle cx="48" cy="40" r="16" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+        <path d="M34 30 L62 30" stroke="#1C1005" stroke-width="3"/>
+        <rect x="34" y="50" width="28" height="22" fill="#C1440E" stroke="#1C1005" stroke-width="2"/>
+      </svg>
+      <svg class="sc-svg sc-proceed" viewBox="0 0 96 120" aria-hidden="true">
+        <line x1="48" y1="60" x2="48" y2="116" stroke="#1C1005" stroke-width="4"/>
+        <line x1="20" y1="44" x2="76" y2="44" stroke="#1C1005" stroke-width="4"/>
+        <circle cx="48" cy="36" r="16" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+        <path d="M34 26 L62 26" stroke="#1C1005" stroke-width="3"/>
+        <circle cx="42" cy="36" r="2" fill="#1C1005"/><circle cx="54" cy="36" r="2" fill="#1C1005"/>
+        <path d="M42 44 Q48 50 54 44" stroke="#1C1005" stroke-width="2" fill="none"/>
+        <rect x="34" y="50" width="28" height="22" fill="#34D399" stroke="#1C1005" stroke-width="2"/>
+      </svg>
+      <svg class="sc-svg sc-guide" viewBox="0 0 96 120" aria-hidden="true">
+        <line x1="48" y1="60" x2="48" y2="116" stroke="#1C1005" stroke-width="4"/>
+        <line x1="20" y1="44" x2="62" y2="60" stroke="#1C1005" stroke-width="4"/>
+        <line x1="62" y1="60" x2="76" y2="64" stroke="#1C1005" stroke-width="4"/>
+        <circle cx="48" cy="36" r="16" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+        <text x="68" y="40" font-family="Playfair Display, serif" font-size="20" fill="#E8A217">?</text>
+        <rect x="34" y="50" width="28" height="22" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+      </svg>
+      <svg class="sc-svg sc-deny" viewBox="0 0 96 120" aria-hidden="true">
+        <line x1="48" y1="60" x2="48" y2="116" stroke="#1C1005" stroke-width="4"/>
+        <path d="M22 70 L48 56 L74 70" stroke="#1C1005" stroke-width="4" fill="none"/>
+        <circle cx="48" cy="34" r="16" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+        <path d="M42 30 L54 38 M54 30 L42 38" stroke="#1C1005" stroke-width="2"/>
+        <rect x="34" y="50" width="28" height="22" fill="#C1440E" stroke="#1C1005" stroke-width="2"/>
+      </svg>
+      <svg class="sc-svg sc-confirm" viewBox="0 0 96 120" aria-hidden="true">
+        <line x1="48" y1="60" x2="48" y2="116" stroke="#1C1005" stroke-width="4"/>
+        <line x1="24" y1="54" x2="48" y2="60" stroke="#1C1005" stroke-width="4"/>
+        <line x1="48" y1="60" x2="48" y2="30" stroke="#1C1005" stroke-width="2"/>
+        <path d="M48 30 L70 36 L48 44" fill="#2D3A7C" stroke="#1C1005" stroke-width="1"/>
+        <circle cx="48" cy="36" r="16" fill="#E8A217" stroke="#1C1005" stroke-width="2"/>
+        <rect x="34" y="50" width="28" height="22" fill="#2D3A7C" stroke="#1C1005" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <div class="dec-log" id="dec-log" aria-live="polite"></div>
+  </section>
+</main>
+
+<footer>Built with the AWS User Group Madurai Strands Decider hackathon kit</footer>
+
+<script>
+const THRESH = 0.65;
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const log = document.getElementById("log");
+
+fetch("/api/info").then(r => r.json()).then(i => {
+  document.getElementById("name").textContent = i.agent;
+  document.getElementById("meta").textContent = `LLM: ${i.llm} · Decider: ${i.decider} · ${i.target === "agentcore" ? "on AgentCore Runtime" : "local agent"}`;
+});
+
+// Tamil / English toggle: swap data-en/data-ta text and placeholders, flip <html lang>. No reload.
+let lang = "en";
+document.getElementById("lang").addEventListener("click", () => {
+  lang = (lang === "en") ? "ta" : "en";
+  document.documentElement.lang = lang;
+  document.querySelectorAll("[data-en][data-ta]").forEach((el) => {
+    el.textContent = el.getAttribute("data-" + lang);
+  });
+  document.querySelectorAll("[data-en-placeholder][data-ta-placeholder]").forEach((el) => {
+    el.placeholder = el.getAttribute("data-" + lang + "-placeholder");
+  });
+});
+
+function add(cls, html) {
+  const d = document.createElement("div");
+  d.className = "msg " + cls;     // "msg msg-farmer" or "msg msg-agent"
+  d.innerHTML = html;
+  log.appendChild(d); log.scrollTop = 1e9;
+  return d;
+}
+
+function setFurrow(rowId, conf, label) {
+  const row = document.getElementById(rowId);
+  if (!row) return;
+  const seedling = row.querySelector(".seedling");
+  const val = row.querySelector(".furrow-value");
+  const c = Math.max(0, Math.min(1, Number(conf) || 0));
+  seedling.style.setProperty("--conf", c.toFixed(3));
+  seedling.classList.toggle("wilted", c < THRESH);
+  val.textContent = (label === null || label === undefined || label === "") ? c.toFixed(2) : String(label);
+}
+
+function populateFieldPanel(rec) {
+  setFurrow("row-crop_grounded", rec.crop_grounded, (rec.crop_grounded === undefined ? null : Number(rec.crop_grounded).toFixed(2)));
+  setFurrow("row-pest_match", rec.pest_match_confidence, rec.pest_match || "");
+  setFurrow("row-spray_requested", rec.spray_requested, (rec.spray_requested === undefined ? null : Number(rec.spray_requested).toFixed(2)));
+  const v = String(rec.verdict || "").toLowerCase();
+  const gate = document.getElementById("gate");
+  const sc = document.getElementById("scarecrow");
+  gate.className = "field-gate gate-" + (v || "neutral");
+  gate.setAttribute("aria-label", "Verdict: " + (rec.verdict || "none yet"));
+  sc.className = "scarecrow scarecrow-" + (v || "neutral");
+  document.getElementById("gate-verdict").textContent = rec.verdict || "";
+}
+
+function decision(rec) {
+  // SprayGuard record (the Vayal Kaavalan decision): populate the furrow rows + gate + scarecrow.
+  if (rec.pest_match !== undefined) { populateFieldPanel(rec); return; }
+  // Fallback for any other record shape: numeric 0..1 as seedling-height bars, strings as labels.
+  const dec = document.getElementById("dec-log");
+  const title = rec.tool ? `before ${rec.tool}` : (rec.stage || rec.pattern || "decision");
+  const verdict = rec.verdict || rec.action || rec.tier || "";
+  const nums = Object.entries(rec).filter(([k, v]) => typeof v === "number" && v >= 0 && v <= 1 && !k.endsWith("_ms"));
+  const rest = Object.entries(rec).filter(([k, v]) => !(typeof v === "number" && v >= 0 && v <= 1) && !["verdict", "action", "tool", "stage", "pattern"].includes(k));
+  const el = document.createElement("div");
+  el.textContent = `${title} ${verdict} ` + nums.map(([k, v]) => `${k}=${v.toFixed(2)}`).join(" ") + " " + rest.map(([k, v]) => `${k}: ${typeof v === "object" ? JSON.stringify(v) : v}`).join(" · ");
+  dec.appendChild(el);
+}
+
+let pending = [];  // attached photos as data URLs, sent with the next message
+const att = document.getElementById("att");
+document.getElementById("img").addEventListener("change", async (e) => {
+  for (const f of e.target.files) pending.push(await new Promise((ok) => { const r = new FileReader(); r.onload = () => ok(r.result); r.readAsDataURL(f); }));
+  att.innerHTML = pending.map((u) => `<img src="${u}" alt="attached photo">`).join(""); e.target.value = "";
+});
+document.getElementById("f").addEventListener("submit", async (e) => {
+  e.preventDefault(); const m = document.getElementById("m"); const text = m.value.trim(); if (!text && !pending.length) return; m.value = "";
+  const images = pending; pending = []; att.innerHTML = "";
+  add("msg-farmer", images.map((u) => `<img src="${u}" alt="photo">`).join("") + esc(text)); const wait = add("msg-agent", "<span class='t'>thinking...</span>");
+  const r = await fetch("/api/chat", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ message: text || "(photo)", images }) });
+  const out = await r.json();
+  if (out.error) { wait.innerHTML = `<span style="color:#F87171">${esc(out.error)}</span>`; return; }
+  (out.decisions || []).forEach(decision);
+  const n = (out.decisions || []).length;
+  wait.innerHTML = esc(out.reply) + `<div class="t">${out.latency_ms} ms · ${n} decision${n === 1 ? "" : "s"}${out.served_by ? " · " + esc(out.served_by) : ""}</div>`;
+  document.body.dataset.turns = (+(document.body.dataset.turns || 0) + 1);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+# What the demo video shows. Each turn is typed into the demo UI against the real agent.
+# `narrate` describes the situation only; make_video.py appends what the decider actually decided,
+# so the narration never claims something that did not happen. Keep it under about 2.5 minutes.
+# All product data referenced here is FICTIONAL and SYNTHETIC — for demonstration only.
+name: Vayal Kaavalan
+title: Vayal Kaavalan
+# The project slide (shown after the title): a one-line pitch and the features worth showing.
+pitch: "A Tamil-English farm advisor that recommends a fictional spray only when the crop, the symptom and the request all check out."
+features:
+  - "takes short English or Tanglish messages from a smallholder farmer and replies in the same language"
+  - "looks up a fictional product label before any recommendation"
+  - "checks every spray call with Strands Decider before it runs, and sends unsure cases to a human officer"
+  - "runs on Amazon Bedrock for the conversation and Strands Decider for the decision"
+# Vayal Kaavalan follows its single grounded system prompt; the SprayGuard decision is what the
+# video catches on camera, so no eager prompt is used.
+eager: false
+intro: "Vayal Kaavalan is an agricultural advisory assistant for smallholder farmers in Tamil Nadu. The conversation runs on Amazon Bedrock; Strands Decider checks every spray recommendation before any product name reaches the farmer. All product data is fictional and needs a real agriculture officer's confirmation."
+# Used instead of `intro` when the video records the deployed agent and it was deployed without DEMO_EAGER.
+intro_normal: "Vayal Kaavalan is an agricultural advisory assistant for smallholder farmers in Tamil Nadu, running on Amazon Bedrock AgentCore Runtime. Strands Decider checks every spray recommendation before any product name reaches the farmer. All product data is fictional and needs a real agriculture officer's confirmation."
+outro: "One Strands Decider call per spray, typed answers the code can branch on, and Amazon Bedrock for the conversation. All product data is fictional and needs a real agriculture officer's confirmation."
+turns:
+  - id: 1
+    label: "Proceed — clear paddy blast"
+    message: "Ennoda nel payir la kuzhai thandu karuppu aagudhu, blast maadiri theriyudhu. Nelvin-75WP podalama?"
+    say: "Ennoda nel payir la kuzhai thandu karuppu aagudhu, blast maadiri theriyudhu. Nelvin-75WP podalama?"
+    expected_verdict: proceed
+    narrate: "A Tanglish message from a paddy farmer with a clear blast symptom and a named product, asking for a spray."
+    notes: >
+      Tanglish message. Crop=paddy clearly stated, symptom=neck rot / blast clearly described,
+      product named, spray requested. All three questions should pass, so the Field Gate opens.
+  - id: 2
+    label: "Guide — vague symptom"
+    message: "My tomato plants are not looking healthy. Some problem is there."
+    say: "My tomato plants are not looking healthy. Some problem is there."
+    expected_verdict: guide
+    narrate: "An English message naming the crop but with a symptom too vague to identify a pest."
+    notes: >
+      English message. Crop=tomato stated. Symptom too vague to identify a pest, so the decider
+      guides the agent to ask which part of the plant is affected and what it looks like.
+  - id: 3
+    label: "Deny — wrong product for pest"
+    message: "Thakkali la vellai puchchi irukku, Nelvin-75WP potu paarkalama?"
+    say: "Thakkali la vellai puchchi irukku, Nelvin-75WP potu paarkalama?"
+    expected_verdict: deny
+    narrate: "A Tanglish message describing whitefly on tomato but proposing a paddy blast fungicide."
+    notes: >
+      Tanglish. The farmer describes whitefly (vellai puchchi) on tomato; Nelvin-75WP is a paddy
+      fungicide and the symptom does not match the proposed pest, so the gate stays shut.
+  - id: 4
+    label: "Confirm — low confidence escalation"
+    message: "Oru vishayam theriyala, leaf problem irukku, enna spray podanum?"
+    say: "Oru vishayam theriyala, leaf problem irukku, enna spray podanum?"
+    expected_verdict: confirm
+    narrate: "A very ambiguous Tanglish message with no crop and a vague symptom, asking for a spray."
+    notes: >
+      Very ambiguous Tanglish. Crop not named and symptom vague, so the decider is unsure across
+      questions. The case is sent to an agriculture officer and the farmer is told to wait.

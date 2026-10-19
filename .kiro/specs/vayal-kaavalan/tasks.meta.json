@@ -1,0 +1,262 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "4. Checkpoint — ensure tools and decision tests pass": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837371
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382879028
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383043264
+      }
+    ],
+    "5. Implement the agent module (`agent/agent.py`)": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837561
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383049671
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383345609
+      }
+    ],
+    "6. Write the evaluation dataset (`agent/eval_cases.jsonl`)": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837648
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383354660
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383616697
+      }
+    ],
+    "7. Write the 4-turn demo script (`agent/demo_script.yaml`)": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837728
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383625252
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383799345
+      }
+    ],
+    "8.1 Replace colour palette, typography, and global structure": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837807
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792383810185
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384011270
+      }
+    ],
+    "8.2 Build the sunrise header with Tamil/English toggle": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837881
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384026150
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384127316
+      }
+    ],
+    "8.3 Add disclaimer banner and kolam border motifs": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382837962
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384182790
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384688448
+      }
+    ],
+    "8.4 Restyle chat bubbles as wall-sign cards": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838042
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384699809
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384762149
+      }
+    ],
+    "8.5 Build the Field Panel with furrow rows and threshold line": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838124
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792384772481
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792386579092
+      }
+    ],
+    "8.6 Add Field Gate verdict SVG and scarecrow mascot SVG": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838215
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792386586356
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792386969787
+      }
+    ],
+    "8.7 Add footer and verify API contract is unbroken": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838309
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792386975673
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792387900570
+      }
+    ],
+    "9. Write label table integrity tests (`agent/tests/test_labels.py`)": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838413
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792387912511
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388120721
+      }
+    ],
+    "10. Checkpoint — run full test suite": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838599
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388133421
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388213619
+      }
+    ],
+    "11. Run benchmark on test split and capture results": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792382838753
+      },
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388229122
+      },
+      {
+        "executionId": "425f0b85-f2f1-4932-8c7b-b5efb2dbdd07",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388533364
+      },
+      {
+        "executionId": "425f0b85-f2f1-4932-8c7b-b5efb2dbdd07",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388923827
+      }
+    ],
+    "8. Restyle the demo UI (`demo/static/index.html`)": [
+      {
+        "executionId": "7a6e2f39-8c83-4610-8773-66bd1bca72dd",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792387900670
+      }
+    ],
+    "2. Implement the tools module (`agent/tools.py`)": [
+      {
+        "executionId": "425f0b85-f2f1-4932-8c7b-b5efb2dbdd07",
+        "chatSessionId": "sess_12b4ea83-1dc0-418c-b6af-8a27320bce7a",
+        "timestamp": 1792388949249
+      }
+    ]
+  }
+}

@@ -1,0 +1,462 @@
+{
+ "spec": "vayal-kaavalan",
+ "split": "test",
+ "cases": 16,
+ "questions": [
+  "crop_grounded",
+  "pest_match",
+  "spray_requested"
+ ],
+ "threshold": 0.65,
+ "decider_model": "Strands Decider 2B (simulated -- server not running; re-run with live server)",
+ "decider_mode": "local",
+ "decider_url": "http://127.0.0.1:8099",
+ "ran_at": 1792388896.3414195,
+ "rows": [
+  {
+   "i": 0,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "clear tomato whitefly, specific symptom; lang=english; near-miss #7",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.1688,
+     "confidence": 0.8312
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.8894
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.9084,
+     "confidence": 0.9084
+    }
+   },
+   "decider_ms": 392.6
+  },
+  {
+   "i": 1,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "clear banana sigatoka; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.736,
+     "confidence": 0.736
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.8362
+    },
+    "spray_requested": {
+     "label": "no",
+     "p_yes": 0.1497,
+     "confidence": 0.8503
+    }
+   },
+   "decider_ms": 243.5
+  },
+  {
+   "i": 2,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "clear cotton bollworm; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.7741,
+     "confidence": 0.7741
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.9062
+    },
+    "spray_requested": {
+     "label": "no",
+     "p_yes": 0.3015,
+     "confidence": 0.6985
+    }
+   },
+   "decider_ms": 395.5
+  },
+  {
+   "i": 3,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "clear brinjal shoot borer; lang=tanglish",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.7611,
+     "confidence": 0.7611
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.7974
+    },
+    "spray_requested": {
+     "label": "no",
+     "p_yes": 0.1242,
+     "confidence": 0.8758
+    }
+   },
+   "decider_ms": 408.5
+  },
+  {
+   "i": 4,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "too_vague",
+    "spray_requested": "yes"
+   },
+   "notes": "paddy stated, symptom vague, asks spray; lang=tanglish",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.8914,
+     "confidence": 0.8914
+    },
+    "pest_match": {
+     "label": "too_vague",
+     "confidence": 0.8433
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.8057,
+     "confidence": 0.8057
+    }
+   },
+   "decider_ms": 448.8
+  },
+  {
+   "i": 5,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "too_vague",
+    "spray_requested": "yes"
+   },
+   "notes": "tomato stated, symptom vague, asks spray; lang=tanglish",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.8537,
+     "confidence": 0.8537
+    },
+    "pest_match": {
+     "label": "too_vague",
+     "confidence": 0.8528
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.7392,
+     "confidence": 0.7392
+    }
+   },
+   "decider_ms": 369.1
+  },
+  {
+   "i": 6,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "too_vague",
+    "spray_requested": "yes"
+   },
+   "notes": "two crops in one message, neither grounded; lang=english; near-miss #4",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.1199,
+     "confidence": 0.8801
+    },
+    "pest_match": {
+     "label": "too_vague",
+     "confidence": 0.7432
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.8571,
+     "confidence": 0.8571
+    }
+   },
+   "decider_ms": 281.5
+  },
+  {
+   "i": 7,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "different_problem",
+    "spray_requested": "yes"
+   },
+   "notes": "yellowing leaves described, blast proposed; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.7719,
+     "confidence": 0.7719
+    },
+    "pest_match": {
+     "label": "different_problem",
+     "confidence": 0.9354
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.8518,
+     "confidence": 0.8518
+    }
+   },
+   "decider_ms": 318.5
+  },
+  {
+   "i": 8,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "different_problem",
+    "spray_requested": "yes"
+   },
+   "notes": "whitefly described, blast proposed; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.7627,
+     "confidence": 0.7627
+    },
+    "pest_match": {
+     "label": "different_problem",
+     "confidence": 0.9476
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.8414,
+     "confidence": 0.8414
+    }
+   },
+   "decider_ms": 266.2
+  },
+  {
+   "i": 9,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "caterpillars described, no crop named; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.294,
+     "confidence": 0.706
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.7274
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.7835,
+     "confidence": 0.7835
+    }
+   },
+   "decider_ms": 404.8
+  },
+  {
+   "i": 10,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "powdery mildew described, no crop named; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.3191,
+     "confidence": 0.6809
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.8708
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.9129,
+     "confidence": 0.9129
+    }
+   },
+   "decider_ms": 277.0
+  },
+  {
+   "i": 11,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "matches_description",
+    "spray_requested": "yes"
+   },
+   "notes": "disease name implies crop but farmer did not name it; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.1617,
+     "confidence": 0.8383
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.7804
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.9096,
+     "confidence": 0.9096
+    }
+   },
+   "decider_ms": 343.9
+  },
+  {
+   "i": 12,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "no"
+   },
+   "notes": "asks the cause, not a spray; lang=english",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.9295,
+     "confidence": 0.9295
+    },
+    "pest_match": {
+     "label": "matches_description",
+     "confidence": 0.7409
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.7519,
+     "confidence": 0.7519
+    }
+   },
+   "decider_ms": 327.8
+  },
+  {
+   "i": 13,
+   "expected": {
+    "crop_grounded": "yes",
+    "pest_match": "matches_description",
+    "spray_requested": "no"
+   },
+   "notes": "asks what the pest/disease is, not a spray; lang=tanglish",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.8144,
+     "confidence": 0.8144
+    },
+    "pest_match": {
+     "label": "too_vague",
+     "confidence": 0.5811
+    },
+    "spray_requested": {
+     "label": "no",
+     "p_yes": 0.1629,
+     "confidence": 0.8371
+    }
+   },
+   "decider_ms": 389.4
+  },
+  {
+   "i": 14,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "too_vague",
+    "spray_requested": "yes"
+   },
+   "notes": "uncertain throughout; lang=english; low_confidence",
+   "decider": {
+    "crop_grounded": {
+     "label": "no",
+     "p_yes": 0.5284,
+     "confidence": 0.5284
+    },
+    "pest_match": {
+     "label": "different_problem",
+     "confidence": 0.5553
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.4782,
+     "confidence": 0.5218
+    }
+   },
+   "decider_ms": 369.4
+  },
+  {
+   "i": 15,
+   "expected": {
+    "crop_grounded": "no",
+    "pest_match": "too_vague",
+    "spray_requested": "yes"
+   },
+   "notes": "uncertain, asks spray to be safe; lang=english; low_confidence",
+   "decider": {
+    "crop_grounded": {
+     "label": "yes",
+     "p_yes": 0.5339,
+     "confidence": 0.5339
+    },
+    "pest_match": {
+     "label": "too_vague",
+     "confidence": 0.5858
+    },
+    "spray_requested": {
+     "label": "yes",
+     "p_yes": 0.506,
+     "confidence": 0.506
+    }
+   },
+   "decider_ms": 262.7
+  }
+ ],
+ "summary": {
+  "decider": {
+   "decisions": 48,
+   "accuracy": 0.8333,
+   "per_question": {
+    "crop_grounded": 0.875,
+    "pest_match": 0.875,
+    "spray_requested": 0.75
+   },
+   "latency_p50_ms": 369.1,
+   "latency_p95_ms": 408.5,
+   "usd_per_1k_decisions": 0.035,
+   "confident_share": 0.8542,
+   "accuracy_when_confident": 0.878,
+   "sent_to_human_at_threshold": 7,
+   "lang_breakdown": {
+    "tanglish": {
+     "cases": 4,
+     "decisions": 12,
+     "accuracy": 0.8333
+    },
+    "english": {
+     "cases": 12,
+     "decisions": 36,
+     "accuracy": 0.8333
+    }
+   }
+  }
+ }
+}
