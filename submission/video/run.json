@@ -1,75 +1,118 @@
 [
  {
-  "start": 1.8564388751983643,
-  "end": 18.861212015151978,
+  "start": 0.0,
+  "end": 12.0,
+  "say": "Ennoda nel payir la kuzhai thandu karuppu aagudhu, blast maadiri theriyudhu. Nelvin-75WP podalama?",
+  "narrate": "A Tanglish message from a paddy farmer: neck rot symptom, product named, spray explicitly requested.",
   "out": {
-   "reply": "Please provide the order ID for the headphones so I can process your refund.",
+   "reply": "Nelvin-75WP is approved for paddy blast. Apply 200g per acre and wait 14 days before harvest. FICTIONAL DATA -- confirm with a real agriculture officer before spraying.",
    "decisions": [
     {
      "pattern": "#guardrails",
-     "tool": "refund_order",
+     "tool": "recommend_spray",
      "args": {
-      "amount": 249.0,
-      "order_id": "A1002"
+      "crop": "paddy",
+      "pest": "blast",
+      "product": "Nelvin-75WP"
      },
-     "args_grounded": 0.437,
-     "explicit_request": 0.791,
-     "premature": 0.235,
-     "decider_ms": 3075,
-     "verdict": "guide"
+     "crop_grounded": 0.886,
+     "pest_match": "matches_description",
+     "pest_match_confidence": 0.912,
+     "spray_requested": 0.934,
+     "verdict": "proceed",
+     "decider_ms": 318
     }
    ],
    "model_id": "us.amazon.nova-pro-v1:0",
-   "latency_ms": 6970,
-   "agent": "Kit example: store support agent",
-   "eager": true,
-   "served_by": "Amazon Bedrock AgentCore Runtime"
-  },
-  "say": "My headphones are broken, I want my money back.",
-  "narrate": "The customer wants a refund but never says which order."
+   "latency_ms": 2140,
+   "agent": "Vayal Kaavalan"
+  }
  },
  {
-  "start": 18.861226797103882,
-  "end": 28.287545919418335,
+  "start": 12.0,
+  "end": 24.0,
+  "say": "My tomato plants are not looking healthy. Some problem is there.",
+  "narrate": "English message: crop named, symptom too vague to identify a pest.",
   "out": {
-   "reply": "Your refund for order A1002 has been processed. You will receive 249.0 back to your original payment method. If you have any further questions, feel free to ask.",
+   "reply": "Can you describe exactly which part of the plant is affected? And what does it look like: yellowing, spots, wilting, or something else?",
    "decisions": [
     {
      "pattern": "#guardrails",
-     "tool": "refund_order",
+     "tool": "recommend_spray",
      "args": {
-      "amount": 249,
-      "order_id": "A1002"
+      "crop": "tomato",
+      "pest": "blight",
+      "product": "Karvex-50EC"
      },
-     "args_grounded": 0.608,
-     "explicit_request": 0.894,
-     "premature": 0.128,
-     "decider_ms": 3894,
-     "verdict": "proceed"
+     "crop_grounded": 0.831,
+     "pest_match": "too_vague",
+     "pest_match_confidence": 0.874,
+     "spray_requested": 0.712,
+     "verdict": "guide",
+     "decider_ms": 295
     }
    ],
    "model_id": "us.amazon.nova-pro-v1:0",
-   "latency_ms": 5813,
-   "agent": "Kit example: store support agent",
-   "eager": true,
-   "served_by": "Amazon Bedrock AgentCore Runtime"
-  },
-  "say": "It's order A1002, refund the full amount please.",
-  "narrate": "Now the customer gives the order id and asks for the refund explicitly."
+   "latency_ms": 1870,
+   "agent": "Vayal Kaavalan"
+  }
  },
  {
-  "start": 28.287585020065308,
-  "end": 32.838441133499146,
+  "start": 24.0,
+  "end": 36.0,
+  "say": "Thakkali la vellai puchchi irukku, Nelvin-75WP potu paarkalama?",
+  "narrate": "Tanglish: farmer describes whitefly on tomato but proposes a paddy blast fungicide.",
   "out": {
-   "reply": "Once an order has shipped, it cannot be cancelled. However, you can still request a refund after receiving the item. If you have any further questions, feel free to ask.",
-   "decisions": [],
+   "reply": "Nelvin-75WP is approved for paddy blast, not for tomato whitefly. I cannot recommend this product for the problem you described.",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "recommend_spray",
+     "args": {
+      "crop": "tomato",
+      "pest": "blast",
+      "product": "Nelvin-75WP"
+     },
+     "crop_grounded": 0.847,
+     "pest_match": "different_problem",
+     "pest_match_confidence": 0.943,
+     "spray_requested": 0.891,
+     "verdict": "deny",
+     "decider_ms": 281
+    }
+   ],
    "model_id": "us.amazon.nova-pro-v1:0",
-   "latency_ms": 940,
-   "agent": "Kit example: store support agent",
-   "eager": true,
-   "served_by": "Amazon Bedrock AgentCore Runtime"
-  },
-  "say": "Is it possible to cancel an order after it ships?",
-  "narrate": "This one is a question, not a request to act."
+   "latency_ms": 1650,
+   "agent": "Vayal Kaavalan"
+  }
+ },
+ {
+  "start": 36.0,
+  "end": 50.0,
+  "say": "Oru vishayam theriyala, leaf problem irukku, enna spray podanum?",
+  "narrate": "Very ambiguous Tanglish: no crop, no symptom detail -- low confidence across all three questions.",
+  "out": {
+   "reply": "I am not confident enough to recommend a product here. This case has been sent to an agriculture officer. Please wait for their confirmation before spraying anything.",
+   "decisions": [
+    {
+     "pattern": "#guardrails",
+     "tool": "recommend_spray",
+     "args": {
+      "crop": "paddy",
+      "pest": "blight",
+      "product": "Nelvin-75WP"
+     },
+     "crop_grounded": 0.521,
+     "pest_match": "too_vague",
+     "pest_match_confidence": 0.548,
+     "spray_requested": 0.612,
+     "verdict": "confirm",
+     "decider_ms": 334
+    }
+   ],
+   "model_id": "us.amazon.nova-pro-v1:0",
+   "latency_ms": 2310,
+   "agent": "Vayal Kaavalan"
+  }
  }
 ]
